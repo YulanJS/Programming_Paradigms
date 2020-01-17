@@ -1,0 +1,9 @@
+def x = 10
+def y = 20
+def z = 100
+def foo = lambda(z) lambda(x) (x + y + z)
+def bar = foo(z / 2)
+bar(x * 2)
+
+def tri = lambda(n){def helper = lambda(count, result) = if(count > n) result else helper(count + 1, result + count)};helper(0,0)}
+tri(3)

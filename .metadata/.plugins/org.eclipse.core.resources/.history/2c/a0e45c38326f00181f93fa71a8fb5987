@@ -1,0 +1,5 @@
+def x = 10
+def y = 20
+def z = 30
+def foo = {def x = 2 * y; def y = x + 5; lambda(a, b) a + b + x + y + z}
+foo(x, y)

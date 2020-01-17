@@ -1,0 +1,14 @@
+object practice2 {
+  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  
+  //tri(n) = 0 + 1 + ... + n
+  //tail recursion
+  def tri(n: Int) =
+  {
+  	def helper(count: Int, result: Int) =
+  	{
+  		
+  	}
+  	helper(0, 0)
+  }                                               //> tri: (n: Int)Unit
+}

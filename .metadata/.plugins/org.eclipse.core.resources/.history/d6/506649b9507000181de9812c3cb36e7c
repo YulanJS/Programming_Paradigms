@@ -1,0 +1,6 @@
+def x = 10
+def y = 20
+def z = 100
+def foo = lambda(z) { def y = x + z; 2 * y }
+foo(y)
+foo(z / 2)

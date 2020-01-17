@@ -1,0 +1,29 @@
+object practice2 {
+  println("Welcome to the Scala worksheet")       //> Welcome to the Scala worksheet
+  
+  //tri(n) = 0 + 1 + ... + n
+  //tail recursion
+  def tri(n: Int) =
+  {
+  	def helper(count: Int, result: Int): Int =
+  	{
+  		if(count > n) result else helper(count + 1, result + count)
+  	}
+  	helper(0, 0)
+  }                                               //> tri: (n: Int)Int
+  
+  tri(5)                                          //> res0: Int = 15
+  
+  //exp2(n) = 2 ^ n; use iteration instead of recursion
+  def exp2(n: Int) =
+  {
+  	var result = 1
+  	for(n <- 0 until n)
+  	{
+  		result *= 2
+  	}
+  	result
+  }                                               //> exp2: (n: Int)Int
+  exp2(3)                                         //> res1: Int = 8
+  exp2(4)                                         //> res2: Int = 16
+}

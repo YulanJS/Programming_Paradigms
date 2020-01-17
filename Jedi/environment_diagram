@@ -1,0 +1,5 @@
+def s = 20
+def t = 2
+def bar = {def t = s + 5; lambda(x, y) s + t + x + y}
+def c = bar(s, t)
+c

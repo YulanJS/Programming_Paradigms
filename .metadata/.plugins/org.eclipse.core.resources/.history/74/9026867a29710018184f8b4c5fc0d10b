@@ -1,0 +1,78 @@
+object practice2 {
+  println("Welcome to the Scala worksheet")
+  
+  //tri(n) = 0 + 1 + ... + n
+  //tail recursion
+  def tri(n: Int) =
+  {
+  	def helper(count: Int, result: Int): Int =
+  	{
+  		if(count > n) result else helper(count + 1, result + count)
+  	}
+  	helper(0, 0)
+  }
+  
+  tri(5)
+  
+  //exp2(n) = 2 ^ n; use iteration instead of recursion
+  def exp2(n: Int) =
+  {
+  	var result = 1
+  	for(n <- 0 until n)
+  	{
+  		result *= 2
+  	}
+  	result
+  }
+  exp2(3)
+  exp2(4)
+  
+  def compose[S, T, R](f: T=>R, g: S=>T) = (s: S) => f(g(s))
+  
+  def listCompose[T](funs: List[T=>T]): T=>T =
+  {
+  	//reduce or tail recursion
+  	//List[f1, f2, ..., fn]
+  	def helper() =
+  	{
+  		//f1(f2(f3(...fn())))
+  			
+  	}
+  	
+  	def myself[T](input: T) = input 
+  	
+  	def listCompose[T](funs: List[T => T]): T => T =
+  {
+  	//compose a list of functions
+  	//1. use tail recursion: each one: T => T; composed together
+  	/*
+  	def helper(result: T => T, unseen: List[T => T]): T => T =
+  	{
+  		if(unseen == Nil) result
+  		else helper(compose(unseen.head, result), unseen.tail)
+  	}
+  	helper(myself _, funs.reverse)
+  	*/
+  	//2. use reduce
+  	if(funs == Nil) myself _
+  	else funs.reverse.reduce( (f: T => T, g: T => T) => compose(g, f) )
+  }                                               //> listCompose: [T](funs: List[T => T])T => T
+  
+  def inc(x: Int) = x + 1                         //> inc: (x: Int)Int
+  
+  def square(x: Int) = x * x                      //> square: (x: Int)Int
+  
+  def triple(x: Int) = 3 * x                      //> triple: (x: Int)Int
+  	
+  def foo = listCompose(List(square _, inc _, triple _))
+                                                  //> foo: => Int => Int
+  
+  foo(2)                                          //> res3: Int = 49
+  
+  def boo = listCompose(List[String => String]()) //> boo: => String => String
+  
+  boo("Hello")                                    //> res4: String = Hello
+  
+  }
+  
+}

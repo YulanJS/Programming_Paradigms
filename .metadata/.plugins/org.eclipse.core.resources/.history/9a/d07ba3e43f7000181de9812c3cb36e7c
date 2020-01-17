@@ -1,0 +1,6 @@
+def x = 10
+def y = 20
+def z = 30
+def meta = lambda(f) lambda(x) f(x)
+def bar = meta(lambda(y) y * y)
+bar(10)
